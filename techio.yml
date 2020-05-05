@@ -2,3 +2,10 @@ title: Test matplotlib
 plan:
 - title: Python Snippet
   statement: statement.md
+projects:
+  python:
+    buildCommand: pip install numpy matplotlib Pillow; pip install scipy numba
+    root: /
+    runner:
+      name: python
+      version: '3.6'
