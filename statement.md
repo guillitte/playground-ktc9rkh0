@@ -1,31 +1,33 @@
-# Welcome!
+# Bonjour!
 
-This Python template lets you get started quickly with a simple one-page playground.
+Ce programme python recherche les racines d'une fonctions en utilsant deux méthodes : par dichotomie et par la méthode de Newton
 
 ```python runnable
-import matplotlib.pyplot as plt
-import numpy as np
-from scipy.integrate import odeint
+def f(x):
+    return x**3+x**2-4*x-5
 
-# On précise notre constante
-a=-0.1
-# On crée la liste des temps : 1000 points entre t=0 et t=50. 
-# Plus on met de points plus la résolution sera précise
-temps = np.linspace(0, 50,1000)
+def df(x):
+    return 3*x**2+2*x-4
 
-# L'équation différentielle sous forme de fonction :
-def equation(Y,temps):
-    return a*Y
+def zeros(f, a, b, eps=1/100):
+    if f(a)*f(b) > 0:
+        return None
+    while abs(b-a) > eps:    
+        c = (a+b)/2
+        if f(a)*f(c) > 0:
+            a=c
+        else:
+            b=c
+    return (a, b)  
 
-#On résout notre équation différentielle et on récupère la liste des résultats
-Y=odeint(equation, [10], temps)
 
-#On affiche le résultat des Y en fonction du temps
-plt.plot(temps,Y)
-# On montre le résultat
-plt.show()
+def newton(f, df, a, eps=1/100):
+    while abs(f(a))>eps:
+        a = a-f(a)/df(a)
+    return a
+
+
+print(zeros(f, 1, 5, eps=1/1000000000000))
+print(newton(f, df, 1, eps=1/1000000000000))
 ```
 
-# Advanced usage
-
-If you want a more complex example (external libraries, viewers...), use the [Advanced Python template](https://tech.io/select-repo/429)
