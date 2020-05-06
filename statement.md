@@ -1,6 +1,6 @@
 # Bonjour!
 
-Ce programme python recherche les racines d'une fonctions en utilsant deux méthodes : par dichotomie et par la méthode de Newton
+Ce programme python recherche une racine d'une fonction en utilsant deux méthodes : par dichotomie et par la méthode de Newton
 
 ```python runnable
 def f(x):
@@ -10,6 +10,8 @@ def df(x):
     return 3*x**2+2*x-4
 
 def zeros(f, a, b, eps=1/100):
+    # Recherche un zéro d'une fonction f sur un intervalle [a,b]. eps est la précision souhaitée (par défaut, 1/100)
+    # f'a) et f(b) doivent être de signes contraires.
     if f(a)*f(b) > 0:
         return None
     while abs(b-a) > eps:    
@@ -21,11 +23,13 @@ def zeros(f, a, b, eps=1/100):
     return (a, b)  
 
 
-def newton(f, df, a, eps=1/100):
+def newton(f, df, a, eps=1/100, maxIter=1000):
+    # Recherche un zéro d'une fonction f par la méthode de Newton. eps est la précision souhaitée (par défaut, 1/100)
+    # maxIter est le nombre maximum d'itération (par défaut, 1000)
     i=0
     while abs(f(a))>eps:
         a = a-f(a)/df(a)
-        if i > 1000:
+        if i > maxIter:
             return None
     return a
 
