@@ -38,6 +38,7 @@ def newton(f, df, a, eps=1e-3, maxIter=1000):
         except:
             return None
         a = a - delta
+        i += 1
         if i > maxIter:
             return None
     return a
