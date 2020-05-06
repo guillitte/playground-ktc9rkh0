@@ -26,8 +26,9 @@ def zeros(f, a, b, eps=1e-3):
 def newton(f, df, a, eps=1e-3, maxIter=1000):
     # Recherche un zéro d'une fonction f par la méthode de Newton. 
     # df doit être la dérivée de f
+    # a est une valeur de départ
     # eps est la précision souhaitée (par défaut, 1/1000)
-    # maxIter est le nombre maximum d'itération (par défaut, 1000)
+    # maxIter est le nombre maximum d'itérations (par défaut, 1000)
     i=0
     while abs(f(a))>eps:
         a = a-f(a)/df(a)
