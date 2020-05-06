@@ -22,8 +22,11 @@ def zeros(f, a, b, eps=1/100):
 
 
 def newton(f, df, a, eps=1/100):
+    i=0
     while abs(f(a))>eps:
         a = a-f(a)/df(a)
+        if i > 1000:
+            return None
     return a
 
 
