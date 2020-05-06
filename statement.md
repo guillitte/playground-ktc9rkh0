@@ -11,7 +11,7 @@ def df(x):
 
 def zeros(f, a, b, eps=1e-3):
     # Recherche un zéro d'une fonction f sur un intervalle [a,b]. eps est la précision souhaitée (par défaut, 1/1000)
-    # f'a) et f(b) doivent être de signes contraires.
+    # f(a) et f(b) doivent être de signes contraires.
     if f(a)*f(b) > 0:
         return None
     while abs(b-a) > eps:    
@@ -30,8 +30,13 @@ def newton(f, df, a, eps=1e-3, maxIter=1000):
     # eps est la précision souhaitée (par défaut, 1/1000)
     # maxIter est le nombre maximum d'itérations (par défaut, 1000)
     i=0
-    while abs(f(a))>eps:
-        a = a-f(a)/df(a)
+    delta=1
+    while abs(delta)>eps:
+        try:
+            delta = f(a)/df(a)
+        except:
+            return None
+        a = a - delta
         if i > maxIter:
             return None
     return a
