@@ -1,7 +1,7 @@
 # Bonjour!
 
 Ce programme python recherche une racine d'une fonction en utilsant deux méthodes : par dichotomie et par la méthode de Newton
-La fonction f est définie par f(x) = x³ + x² - 4x + 5 et sa dérivée est f'(x) = 3x² + 2x - 4
+La fonction f est définie par f(x) = x³ + x² - 4x - 5 et sa dérivée est f'(x) = 3x² + 2x - 4
 
 ```python runnable
 def f(x):
